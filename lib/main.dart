@@ -1,3 +1,5 @@
+import 'package:whatsapp/screens/phone_number_entry_screen.dart';
+
 import './imports.dart';
 import 'theme/themedata.dart';
 import 'package:get/get.dart';
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
       darkTheme: UserTheme.darkTheme,
       theme: UserTheme.lightTheme,
       themeMode: ThemeMode.system,
-      home: WelcomeScreen(),
+      home: PhoneNumberEntryScreen(),
     );
   }
 }
