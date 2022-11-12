@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       darkTheme: UserTheme.darkTheme,
       theme: UserTheme.lightTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       home: PhoneNumberEntryScreen(),
     );
   }
