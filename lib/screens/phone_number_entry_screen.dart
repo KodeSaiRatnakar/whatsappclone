@@ -133,7 +133,7 @@ class PhoneNumberEntryScreen extends StatelessWidget {
                               cursorColor: Colors.green,
                               style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
-                                  errorStyle: TextStyle(fontSize: 1),
+                                  errorStyle: TextStyle(fontSize: 10),
                                   hintText: "Phone number",
                                   hintStyle: TextStyle(
                                       color: themePrimaryColor, fontSize: 12),
