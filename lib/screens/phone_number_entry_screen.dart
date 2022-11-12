@@ -1,5 +1,3 @@
-import 'package:get/get_connect/http/src/utils/utils.dart';
-
 import '../imports.dart';
 
 class PhoneNumberEntryScreen extends StatelessWidget {
