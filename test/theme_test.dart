@@ -7,7 +7,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:whatsapp/imports.dart';
 
 import 'package:whatsapp/main.dart';
 
-void main() {}
+void main() {
+  test('theme test', () {
+    final backgroundColor = UserTheme.darkTheme.backgroundColor;
+    assert(backgroundColor == Colors.black);
+  });
+}
