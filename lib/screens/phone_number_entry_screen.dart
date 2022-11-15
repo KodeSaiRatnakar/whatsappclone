@@ -4,9 +4,6 @@ class PhoneNumberEntryScreen extends StatelessWidget {
   PhoneNumberEntryScreen({super.key});
   final formKey = GlobalKey<FormState>();
 
-
-
-  
   @override
   Widget build(BuildContext context) {
     Color themeBackgroundColor = Theme.of(context).backgroundColor;
@@ -23,7 +20,7 @@ class PhoneNumberEntryScreen extends StatelessWidget {
           ),
           Row(
             children: [
-              Spacer(flex: 5),
+              const Spacer(flex: 5),
               Text(
                 "Verify your Phone Number",
                 style: themeTextStyle.copyWith(
@@ -31,16 +28,16 @@ class PhoneNumberEntryScreen extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                     color: themePrimaryColor),
               ),
-              Spacer(
+              const Spacer(
                 flex: 4,
               ),
-              IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
-              Spacer(
+              IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+              const Spacer(
                 flex: 1,
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Padding(
