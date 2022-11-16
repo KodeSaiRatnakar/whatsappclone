@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import '../imports.dart';
 
 class InternetConnectionStatus extends GetxController {
@@ -7,24 +5,27 @@ class InternetConnectionStatus extends GetxController {
 
   final Connectivity _connectivity = Connectivity();
 
+  late StreamSubscription connectivitySubscription;
+
   @override
   void onInit() {
     super.onInit();
-    monitoring();
+    connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(monitoring);
   }
 
-  void monitoring() async {
-    _connectivity.onConnectivityChanged.asBroadcastStream().listen(
-      (result) {
-        if (result == ConnectivityResult.none) {
-          isIneternetAvailble.value = 0;
-          update();
-        } else {
-          isIneternetAvailble.value = 1;
-          update();
-        }
-      },
-    );
+  @override
+  void onClose() {
+    connectivitySubscription.cancel();
+    super.onClose();
+  }
+
+  void monitoring(ConnectivityResult result) async {
+    if (result == ConnectivityResult.none) {
+      isIneternetAvailble.value = 0;
+    } else {
+      isIneternetAvailble.value = 1;
+    }
   }
 }
 
