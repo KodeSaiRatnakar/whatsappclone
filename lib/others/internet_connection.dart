@@ -1,7 +1,7 @@
 import '../imports.dart';
 
 class InternetConnectionStatus extends GetxController {
-  var isIneternetAvailble = 0.obs;
+  var isIneternetAvailble = false.obs;
 
   final Connectivity _connectivity = Connectivity();
 
@@ -22,9 +22,9 @@ class InternetConnectionStatus extends GetxController {
 
   void monitoring(ConnectivityResult result) async {
     if (result == ConnectivityResult.none) {
-      isIneternetAvailble.value = 0;
+      isIneternetAvailble.value = false;
     } else {
-      isIneternetAvailble.value = 1;
+      isIneternetAvailble.value = true;
     }
   }
 }
@@ -32,6 +32,8 @@ class InternetConnectionStatus extends GetxController {
 class InternetConnectionBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<InternetConnectionStatus>(() => InternetConnectionStatus());
+    Get.lazyPut<InternetConnectionStatus>(
+      () => InternetConnectionStatus(),
+    );
   }
 }

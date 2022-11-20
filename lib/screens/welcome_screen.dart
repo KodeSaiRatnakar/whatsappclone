@@ -6,18 +6,20 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size mediaSize = MediaQuery.of(context).size;
-    InternetConnectionStatus _internetConnectivity =
+    InternetConnectionStatus internetConnectivity =
         Get.find<InternetConnectionStatus>();
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Obx(
         () {
-          if (_internetConnectivity.isIneternetAvailble.value == 0) {
+          if (!internetConnectivity.isIneternetAvailble.value) {
             return Center(
               child: Text(
                 "No Internet",
-                style: TextStyle(color: Theme.of(context).primaryColor),
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
             );
           } else {
@@ -44,8 +46,9 @@ class WelcomeScreen extends StatelessWidget {
                                 ? mediaSize.width * 0.3
                                 : mediaSize.width * 0.1,
                         child: const Image(
-                            image: AssetImage("assets/whatsapp.png"),
-                            fit: BoxFit.fill),
+                          image: AssetImage("assets/whatsapp.png"),
+                          fit: BoxFit.fill,
+                        ),
                       ),
                       const Spacer(),
                       const Spacer(),
@@ -60,7 +63,9 @@ class WelcomeScreen extends StatelessWidget {
                             TextSpan(text: "Read our "),
                             TextSpan(
                               text: "Privacy Policy ",
-                              style: TextStyle(color: Colors.blueAccent),
+                              style: TextStyle(
+                                color: Colors.blueAccent,
+                              ),
                             ),
                             TextSpan(
                               text: "Tap 'Agree and Continue' to accept the ",
@@ -79,7 +84,9 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.to(PhoneNumberEntryScreen());
+                          Get.to(
+                            () => PhoneNumberEntryScreen(),
+                          );
                         },
                         child: Container(
                           width: defaultTargetPlatform ==
