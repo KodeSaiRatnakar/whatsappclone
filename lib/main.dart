@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       darkTheme: UserTheme.darkTheme,
       theme: UserTheme.lightTheme,
       themeMode: ThemeMode.dark,
-      home: const WelcomeScreen(),
+      initialRoute: '/welcome',
       routes: {
         "/welcome": (context) => const WelcomeScreen(),
         "/phone_number_entry_screen": (context) => PhoneNumberEntryScreen(),

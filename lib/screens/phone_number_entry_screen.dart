@@ -1,8 +1,10 @@
 import '../imports.dart';
 
 class PhoneNumberEntryScreen extends StatelessWidget {
-  PhoneNumberEntryScreen({super.key});
+  PhoneNumberEntryScreen({Key? key});
+
   final formKey = GlobalKey<FormState>();
+  TextEditingController phoneNumberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -14,110 +16,131 @@ class PhoneNumberEntryScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: themeBackgroundColor,
       body: SafeArea(
-        child: Column(children: [
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              const Spacer(flex: 5),
-              Text(
-                "Verify your Phone Number",
-                style: themeTextStyle.copyWith(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                const Spacer(flex: 5),
+                Text(
+                  "Verify your Phone Number",
+                  style: themeTextStyle.copyWith(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
-                    color: themePrimaryColor),
-              ),
-              const Spacer(
-                flex: 4,
-              ),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
-              const Spacer(
-                flex: 1,
-              )
-            ],
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: FittedBox(
-              child: Text(
-                "WhatsApp willneed to verify to your phone number.",
-                style: themeTextStyle.copyWith(color: themePrimaryColor),
+                    color: themePrimaryColor,
+                  ),
+                ),
+                const Spacer(
+                  flex: 4,
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.menu,
+                  ),
+                ),
+                const Spacer(
+                  flex: 1,
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: FittedBox(
+                child: Text(
+                  "WhatsApp will need to verify to your phone number.",
+                  style: themeTextStyle.copyWith(
+                    color: themePrimaryColor,
+                  ),
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            width: mediaSize.width * 0.75,
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Spacer(
-                      flex: 5,
-                    ),
-                    Text(
-                      "India",
-                      style: TextStyle(
+            const SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              width: mediaSize.width * 0.75,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      const Spacer(
+                        flex: 5,
+                      ),
+                      Text(
+                        "India",
+                        style: TextStyle(
                           fontSize: 20,
                           color: themePrimaryColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Spacer(
-                      flex: 4,
-                    ),
-                    Icon(Icons.keyboard_arrow_down_rounded),
-                  ],
-                ),
-                Divider(
-                  color: Colors.green,
-                  thickness: 2,
-                ),
-                Container(
-                  height: mediaSize.height * 0.1,
-                  child: Row(
-                    children: [
-                      Spacer(),
-                      Container(
-                        width: mediaSize.width * 0.15,
-                        child: Column(
-                          children: [
-                            Spacer(),
-                            Text(
-                              "+91",
-                              style: TextStyle(
-                                  color: themePrimaryColor, fontSize: 15),
-                            ),
-                            SizedBox(
-                              height: 14,
-                            ),
-                            // ignore: prefer_const_constructors
-                            Divider(
-                              color: Colors.green,
-                              thickness: 2,
-                            ),
-                            SizedBox(
-                              height: 1.5,
-                            )
-                          ],
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Spacer(),
-                      Container(
-                          margin: const EdgeInsets.only(bottom: 2),
+                      const Spacer(
+                        flex: 4,
+                      ),
+                      const Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                      ),
+                    ],
+                  ),
+                  const Divider(
+                    color: Colors.green,
+                    thickness: 2,
+                  ),
+                  SizedBox(
+                    height: mediaSize.height * 0.1,
+                    child: Row(
+                      children: [
+                        const Spacer(),
+                        SizedBox(
+                          width: mediaSize.width * 0.15,
+                          child: Column(
+                            children: [
+                              const Spacer(),
+                              Text(
+                                "+91",
+                                style: TextStyle(
+                                  color: themePrimaryColor,
+                                  fontSize: 15,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 14,
+                              ),
+                              // ignore: prefer_const_constructors
+                              Divider(
+                                color: Colors.green,
+                                thickness: 2,
+                              ),
+                              const SizedBox(
+                                height: 1.5,
+                              )
+                            ],
+                          ),
+                        ),
+                        const Spacer(),
+                        Container(
+                          margin: const EdgeInsets.only(
+                            bottom: 2,
+                          ),
                           width: mediaSize.width * 0.4,
                           decoration: const BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(
-                                      color: Colors.green, width: 2))),
+                            border: Border(
+                              bottom: BorderSide(
+                                color: Colors.green,
+                                width: 2,
+                              ),
+                            ),
+                          ),
                           child: Form(
                             key: formKey,
                             child: TextFormField(
+                              controller: phoneNumberController,
                               onChanged: ((value) {
                                 formKey.currentState!.validate();
                               }),
@@ -130,48 +153,94 @@ class PhoneNumberEntryScreen extends StatelessWidget {
                               }),
                               keyboardType: TextInputType.number,
                               cursorColor: Colors.green,
-                              style: TextStyle(color: Colors.white),
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
                               decoration: InputDecoration(
-                                  errorStyle: TextStyle(fontSize: 10),
-                                  hintText: "Phone number",
-                                  hintStyle: TextStyle(
-                                      color: themePrimaryColor, fontSize: 12),
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide.none),
-                                  errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide.none)),
+                                errorStyle: const TextStyle(
+                                  fontSize: 10,
+                                ),
+                                hintText: "Phone number",
+                                hintStyle: TextStyle(
+                                  color: themePrimaryColor,
+                                  fontSize: 12,
+                                ),
+                                border: const OutlineInputBorder(
+                                    borderSide: BorderSide.none),
+                                errorBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                ),
+                              ),
                             ),
-                          )),
-                      Spacer(),
-                    ],
+                          ),
+                        ),
+                        const Spacer(),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Spacer(
-            flex: 1,
-          ),
-          ElevatedButton(
+            const Spacer(
+              flex: 1,
+            ),
+            ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.green),
+                backgroundColor: MaterialStateProperty.all(
+                  Colors.green,
+                ),
               ),
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  print("yes");
+                  showIndicator(context);
+                  signIn(phoneNumberController.text, context);
                 } else {
                   print("No");
+                  signIn(phoneNumberController.text, context);
                 }
               },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text("Next"),
-              )),
-          SizedBox(
-            height: 20,
-          )
-        ]),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            )
+          ],
+        ),
       ),
     );
   }
+}
+
+void showIndicator(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) => const Center(
+      child: CircularProgressIndicator(
+        color: Colors.green,
+      ),
+    ),
+  );
+}
+
+Future signIn(String number, BuildContext context) async {
+  await FirebaseAuth.instance.verifyPhoneNumber(
+    phoneNumber: "+91$number",
+    verificationCompleted: (PhoneAuthCredential credential) {},
+    verificationFailed: (FirebaseAuthException e) {},
+    codeSent: (String verificationId, int? resendToken) {
+      Get.to(
+        () => OtpEntryScreen(
+          verificationId: verificationId,
+        ),
+      );
+    },
+    codeAutoRetrievalTimeout: (String verificationId) {
+      Get.toEnd(
+        () => PhoneNumberEntryScreen(),
+      );
+    },
+  );
 }
