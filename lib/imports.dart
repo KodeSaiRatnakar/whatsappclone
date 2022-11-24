@@ -4,6 +4,7 @@ export 'screens/phone_number_entry_screen.dart';
 export 'screens/welcome_screen.dart';
 export 'theme/themedata.dart';
 export '../screens/optEntryScreen.dart';
+export '../screens/home.dart';
 
 export 'dart:async';
 export 'package:connectivity_plus/connectivity_plus.dart';

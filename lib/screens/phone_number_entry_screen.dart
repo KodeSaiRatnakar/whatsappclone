@@ -195,7 +195,6 @@ class PhoneNumberEntryScreen extends StatelessWidget {
                   showIndicator(context);
                   signIn(phoneNumberController.text, context);
                 } else {
-                  print("No");
                   signIn(phoneNumberController.text, context);
                 }
               },
@@ -234,6 +233,7 @@ Future signIn(String number, BuildContext context) async {
       Get.to(
         () => OtpEntryScreen(
           verificationId: verificationId,
+          phoneNum: number,
         ),
       );
     },
